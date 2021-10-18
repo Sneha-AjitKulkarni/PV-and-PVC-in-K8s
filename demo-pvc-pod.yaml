@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pv-pod
+spec:
+  volumes:
+    - name: demo-pv-storage
+      persistentVolumeClaim:
+        claimName: demo-pv-claim
+  containers:
+    - name: demo-pv-container
+      image: nginx
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage

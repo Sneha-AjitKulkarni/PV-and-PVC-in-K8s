@@ -1,0 +1,17 @@
+#To open shell of minikube, minikube ssh
+#creating directory for data,  sudo mkdir /mnt/data
+#creating html, sudo sh -c "echo 'In the K8s' > /mnt/data/demo.html"
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: demo-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data" #locartion of volume on cluster node
